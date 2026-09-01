@@ -11,7 +11,6 @@ const MENU_ITEMS = [
   { href: "/profile/addresses", label: "Addresses" },
   { href: "/orders", label: "Order History" },
   { href: "/payments", label: "Payments & Invoices" },
-  { href: "/price-list", label: "My Price List" },
   { href: "/support", label: "Support" },
   { href: "/profile/settings", label: "Account Settings" },
 ];

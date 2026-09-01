@@ -58,7 +58,7 @@ export function SignInForm() {
         )}
 
         <div className="flex justify-end -mt-2">
-          <Link href="#" className="text-xs text-maroon/70 hover:text-maroon underline underline-offset-2">
+          <Link href="#" className="text-xs text-maroon/70 hover:text-maroon underline underline-offset-2 py-2 -my-2">
             Forgot password?
           </Link>
         </div>

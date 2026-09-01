@@ -38,33 +38,10 @@ const SOCIALS = [
   { label: "LinkedIn", href: "#", path: "M4 4.5A1.5 1.5 0 015.5 3h13A1.5 1.5 0 0120 4.5v15a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 014 19.5v-15zM8.5 9H6v9h2.5V9zM7.25 5.5a1.4 1.4 0 100 2.8 1.4 1.4 0 000-2.8zM18 13.2c0-2.4-1.28-3.5-3-3.5-1.38 0-2 .76-2.34 1.3V9H10v9h2.66v-5c0-.13.01-.27.05-.37.11-.27.36-.55.79-.55.55 0 .78.42.78 1.03V18H17v-4.8h1z" },
 ];
 
-// faint decorative paddy motif anchored at the far left/right edges of the footer
-function PaddyMotif({ flip = false }: { flip?: boolean }) {
-  return (
-    <svg
-      viewBox="0 0 40 160"
-      className={`hidden lg:block absolute bottom-0 ${flip ? "right-0 scale-x-[-1]" : "left-0"} h-40 w-auto text-gold/10`}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.2"
-      aria-hidden="true"
-    >
-      <path d="M20 160V40" />
-      <path d="M20 50c-8-10-8-24 0-34" />
-      <path d="M20 70c8-8 8-22 0-30" />
-      <path d="M20 90c-8-8-8-22 0-30" />
-      <path d="M20 110c8-8 8-22 0-30" />
-    </svg>
-  );
-}
-
 export function SiteFooter() {
   return (
     <footer className="bg-maroon-dark text-ivory mt-24">
       <div className="relative overflow-hidden">
-        <PaddyMotif />
-        <PaddyMotif flip />
-
         <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-10 pt-14 pb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-x-10 gap-y-10">
           <div className="lg:col-span-2 flex flex-col gap-3.5">
             <div className="[&_span]:text-ivory [&_span:last-child]:text-gold/70">
@@ -104,7 +81,7 @@ export function SiteFooter() {
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-9 h-9 flex items-center justify-center rounded-full border border-gold/30 text-gold/80 hover:text-maroon-dark hover:bg-gold hover:border-gold transition-colors duration-200"
+                  className="w-11 h-11 flex items-center justify-center rounded-full border border-gold/30 text-gold/80 hover:text-maroon-dark hover:bg-gold hover:border-gold transition-colors duration-200"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d={s.path} />
@@ -117,15 +94,15 @@ export function SiteFooter() {
 
         <div
           aria-hidden="true"
-          className="relative z-0 mx-auto w-full max-w-[900px] sm:max-w-[1100px] lg:max-w-[1240px] h-24 sm:h-32 lg:h-40 -mb-2"
+          className="relative z-0 w-full h-40 sm:h-56 lg:h-72 -mb-2"
         >
           <Image
             src="/images/footer-illustration.png"
             alt=""
             fill
             priority
-            sizes="(min-width: 1024px) 1240px, (min-width: 640px) 1100px, 900px"
-            className="object-contain object-bottom opacity-80"
+            sizes="100vw"
+            className="object-cover object-bottom opacity-90"
           />
         </div>
       </div>

@@ -2,9 +2,6 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const CURVE_PATH =
-  "M0,0 H1 V0.3 C0.95,0.36 0.92,0.42 0.94,0.48 C0.96,0.54 1,0.58 0.98,0.65 C0.96,0.74 0.9,0.8 0.87,0.88 C0.85,0.93 0.85,0.97 0.87,1 H0 Z";
-
 export function BrandStoryPanel({
   heading,
   subheading,
@@ -17,16 +14,7 @@ export function BrandStoryPanel({
   children?: ReactNode;
 }) {
   return (
-    <div
-      className="relative hidden lg:flex flex-col justify-between text-ivory p-12 xl:p-16 overflow-hidden"
-      style={{ clipPath: "url(#brand-panel-curve)" }}
-    >
-      <svg width="0" height="0" className="absolute" aria-hidden="true">
-        <clipPath id="brand-panel-curve" clipPathUnits="objectBoundingBox">
-          <path d={CURVE_PATH} />
-        </clipPath>
-      </svg>
-
+    <div className="relative hidden lg:flex flex-col justify-between text-ivory p-12 xl:p-16 overflow-hidden border-r border-gold/20">
       <Image
         src="/images/hero/mill-silhouette-bg.png"
         alt=""
@@ -36,16 +24,6 @@ export function BrandStoryPanel({
         className="object-cover animate-fade-scale z-[1]"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-maroon-dark/70 via-maroon-dark/55 to-maroon-dark/85 z-[1]" />
-
-      {/* gold curve stroke, drawn along the exact same path as the clip so the edge reads as a hairline */}
-      <svg
-        viewBox="0 0 1 1"
-        preserveAspectRatio="none"
-        className="absolute inset-0 w-full h-full z-[2] pointer-events-none"
-        aria-hidden="true"
-      >
-        <path d={CURVE_PATH} fill="none" stroke="#C99527" strokeWidth={0.006} vectorEffect="non-scaling-stroke" />
-      </svg>
 
       <Link
         href="/"
@@ -93,16 +71,6 @@ export function BrandStoryPanel({
         )}
 
         {children}
-      </div>
-
-      <div className="relative z-[5] h-[340px] xl:h-[400px] w-[560px] xl:w-[640px] -mx-12 xl:-mx-16 -mb-12 xl:-mb-16 animate-slide-up [animation-delay:0.3s] [animation-fill-mode:both]">
-        <Image
-          src="/images/hero/rice-sack-bowl-paddy.png"
-          alt="Traditional sack of rice, wooden bowl of polished rice, and golden paddy stalks"
-          fill
-          sizes="640px"
-          className="object-contain object-left-bottom"
-        />
       </div>
 
       <div className="relative z-[4] max-w-[46%] pt-6 border-t border-ivory/10">
