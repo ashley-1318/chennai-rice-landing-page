@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-maroon: #5b111b;
+  --color-maroon-dark: #3e0a12;
+  --color-cream: #f7f1e6;
+  --color-ivory: #fcfaf5;
+  --color-gold: #c89a32;
+  --color-gold-muted: #d8b45a;
+  --color-text: #241a17;
+
+  --background: var(--color-ivory);
+  --foreground: var(--color-text);
 }
 
 @theme inline {
+  --color-maroon: var(--color-maroon);
+  --color-maroon-dark: var(--color-maroon-dark);
+  --color-cream: var(--color-cream);
+  --color-ivory: var(--color-ivory);
+  --color-gold: var(--color-gold);
+  --color-gold-muted: var(--color-gold-muted);
+  --color-ink: var(--color-text);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --font-serif: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-slide-up: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-scale-in: scale-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-scale: fade-scale 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes fade-scale {
+    from {
+      opacity: 0;
+      transform: scale(1.04);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: rgba(36, 26, 23, 0.08);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
+
+::selection {
+  background: var(--color-gold-muted);
+  color: var(--color-maroon-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.font-serif-display {
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+}
+
+/* subtle grain texture overlay, used sparingly on hero/section backgrounds */
+.grain-overlay {
+  position: relative;
+}
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: radial-gradient(circle at 1px 1px, var(--color-maroon-dark) 1px, transparent 0);
+  background-size: 18px 18px;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-muted) transparent;
+}
+
+.stagger-in > * {
+  opacity: 0;
+  animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.stagger-in > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-in > *:nth-child(2) { animation-delay: 0.15s; }
+.stagger-in > *:nth-child(3) { animation-delay: 0.25s; }
+.stagger-in > *:nth-child(4) { animation-delay: 0.35s; }
+.stagger-in > *:nth-child(5) { animation-delay: 0.45s; }
